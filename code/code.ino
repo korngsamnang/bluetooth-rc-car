@@ -1,16 +1,17 @@
-// Starting of Program
 #include <Wire.h> 
 #include <LiquidCrystal_I2C.h>
 
 LiquidCrystal_I2C lcd(0x27, 16, 2);
-int m1a = 9;
-int m1b = 10;
-int m2a = 11;
-int m2b = 12;
+
+int INP1 = 12;
+int INP2 = 11;
+int INP3 = 10;
+int INP4 = 9;
+
 int f_led = 2;
 int b_led = 3;
 int buzzer = 4;
-int extra_on = 8;
+int song_ = 8;
 char val;
 
 
@@ -129,14 +130,14 @@ void song(int buzzerPin){
 //
 void setup() 
 {  
-pinMode(m1a, OUTPUT);  // Digital pin 10 set as output Pin
-pinMode(m1b, OUTPUT);  // Digital pin 11 set as output Pin
-pinMode(m2a, OUTPUT);  // Digital pin 12 set as output Pin
-pinMode(m2b, OUTPUT);  // Digital pin 13 set as output Pin
+pinMode(INP4, OUTPUT);  
+pinMode(INP3, OUTPUT);  
+pinMode(INP2, OUTPUT);  
+pinMode(INP1, OUTPUT);  
 pinMode(f_led,OUTPUT);
 pinMode(b_led,OUTPUT);
 pinMode(buzzer,OUTPUT);
-pinMode(extra_on,OUTPUT);
+pinMode(song_,OUTPUT);
 Serial.begin(9600);
 lcd.init();
 lcd.backlight();
@@ -158,68 +159,68 @@ void loop()
 
   if( val == 'F') // Forward
     {
-      digitalWrite(m1a, HIGH);
-      digitalWrite(m1b, LOW);
-      digitalWrite(m2a, HIGH);
-      digitalWrite(m2b, LOW);  
+      digitalWrite(INP4, HIGH);
+      digitalWrite(INP3, LOW);
+      digitalWrite(INP2, HIGH);
+      digitalWrite(INP1, LOW);  
     }
   else if(val == 'B') // Backward
     {
-      digitalWrite(m1a, LOW);
-      digitalWrite(m1b, HIGH);
-      digitalWrite(m2a, LOW);
-      digitalWrite(m2b, HIGH); 
+      digitalWrite(INP4, LOW);
+      digitalWrite(INP3, HIGH);
+      digitalWrite(INP2, LOW);
+      digitalWrite(INP1, HIGH); 
     }
   
     else if(val == 'L') //Left
     {
-    digitalWrite(m1a, LOW);
-    digitalWrite(m1b, LOW);
-    digitalWrite(m2a, HIGH);
-    digitalWrite(m2b, LOW);
+    digitalWrite(INP4, LOW);
+    digitalWrite(INP3, LOW);
+    digitalWrite(INP2, HIGH);
+    digitalWrite(INP1, LOW);
     }
     else if(val == 'R') //Right
     {
-    digitalWrite(m1a, HIGH);
-    digitalWrite(m1b, LOW);
-    digitalWrite(m2a, LOW);
-    digitalWrite(m2b, LOW); 
+    digitalWrite(INP4, HIGH);
+    digitalWrite(INP3, LOW);
+    digitalWrite(INP2, LOW);
+    digitalWrite(INP1, LOW); 
     }
     
   else if(val == 'S') //Stop
     {
-    digitalWrite(m1a, LOW);
-    digitalWrite(m1b, LOW);
-    digitalWrite(m2a, LOW);
-    digitalWrite(m2b, LOW); 
+    digitalWrite(INP4, LOW);
+    digitalWrite(INP3, LOW);
+    digitalWrite(INP2, LOW);
+    digitalWrite(INP1, LOW); 
     }
   else if(val == 'I') //Forward Right
     {
-    digitalWrite(m1a, HIGH);
-    digitalWrite(m1b, LOW);
-    digitalWrite(m2a, LOW);
-    digitalWrite(m2b, LOW);
+    digitalWrite(INP4, HIGH);
+    digitalWrite(INP4, LOW);
+    digitalWrite(INP3, LOW);
+    digitalWrite(INP1, LOW);
     }
   else if(val == 'J') //Backward Right
     {
-    digitalWrite(m1a, LOW);
-    digitalWrite(m1b, HIGH);
-    digitalWrite(m2a, LOW);
-    digitalWrite(m2b, LOW);
+    digitalWrite(INP4, LOW);
+    digitalWrite(INP3, HIGH);
+    digitalWrite(INP2, LOW);
+    digitalWrite(INP1, LOW);
     }
    else if(val == 'G') //Forward Left
     {
-    digitalWrite(m1a, LOW);
-    digitalWrite(m1b, LOW);
-    digitalWrite(m2a, HIGH);
-    digitalWrite(m2b, LOW);
+    digitalWrite(INP4, LOW);
+    digitalWrite(INP3, LOW);
+    digitalWrite(INP2, HIGH);
+    digitalWrite(INP1, LOW);
     }
   else if(val == 'H') //Backward Left
     {
-    digitalWrite(m1a, LOW);
-    digitalWrite(m1b, LOW);
-    digitalWrite(m2a, LOW);
-    digitalWrite(m2b, HIGH); 
+    digitalWrite(INP4, LOW);
+    digitalWrite(INP3, LOW);
+    digitalWrite(INP2, LOW);
+    digitalWrite(INP1, HIGH); 
     }
    else if(val =='W'){
     digitalWrite(f_led,HIGH);
@@ -269,10 +270,10 @@ void loop()
    }
    if(val =='X'){
     
-       song(extra_on);
+       song(song_);
    }
    else if(val =='x'){
-      noTone(extra_on);
+      noTone(song_);
    }
    
 }
