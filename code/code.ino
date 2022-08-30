@@ -15,7 +15,7 @@ int song_ = 8;
 char val;
 
 
-void song(int buzzerPin){
+void song(int buzzerPin){   //function for music code
   
   tone(buzzerPin, 262);
   delay(231);
@@ -126,10 +126,8 @@ void song(int buzzerPin){
   noTone(buzzerPin);
 }
 
-
 //
-void setup() 
-{  
+void setup() {  
 pinMode(INP4, OUTPUT);  
 pinMode(INP3, OUTPUT);  
 pinMode(INP2, OUTPUT);  
@@ -138,11 +136,14 @@ pinMode(f_led,OUTPUT);
 pinMode(b_led,OUTPUT);
 pinMode(buzzer,OUTPUT);
 pinMode(song_,OUTPUT);
+
 Serial.begin(9600);
 lcd.init();
 lcd.backlight();
 lcd.clear();
 lcd.setCursor(0,0);
+
+//show on LCD
 lcd.print("      RUPP");
 lcd.setCursor(0,1);
 lcd.print(" Car Project A7");
@@ -222,19 +223,19 @@ void loop()
     digitalWrite(INP2, LOW);
     digitalWrite(INP1, HIGH); 
     }
-   else if(val =='W'){
+   else if(val =='W'){  //Front light
     digitalWrite(f_led,HIGH);
    }
    else if(val =='w'){
     digitalWrite(f_led,LOW);
    }
-   else if(val =='U'){
+   else if(val =='U'){  //Back light
     digitalWrite(b_led,HIGH);
    }
    else if(val =='u'){
     digitalWrite(b_led,LOW);
    }
-   else if(val == 'V'){
+   else if(val == 'V'){   //For trumpet
       //1
       tone(buzzer, 1000);
       delay(100);                
@@ -249,7 +250,6 @@ void loop()
       tone(buzzer, 1000);
       delay(300);             
       noTone(buzzer);
-    
    }
    else if(val == 'v'){
       //1
@@ -268,8 +268,7 @@ void loop()
       noTone(buzzer);
  
    }
-   if(val =='X'){
-    
+   if(val =='X'){   //For music
        song(song_);
    }
    else if(val =='x'){
