@@ -234,43 +234,38 @@ void loop()
     digitalWrite(b_led,LOW);
    }
    else if(val == 'V'){
-//    tone(buzzer, 1000);
-//    delay(100);
-//    noTone(buzzer); 
-
       //1
       tone(buzzer, 1000);
-      delay(100);                       // wait for a second
+      delay(100);                
       noTone(buzzer);
       delay(100);
       //2
       tone(buzzer, 1000);
-      delay(100);                       // wait for a second
+      delay(100);                    
       noTone(buzzer);
       delay(100);
       //3
       tone(buzzer, 1000);
-      delay(300);                       // wait for a second
+      delay(300);             
       noTone(buzzer);
-      //delay(300);
     
    }
    else if(val == 'v'){
       //1
       tone(buzzer, 1000);
-      delay(100);                       // wait for a second
+      delay(100);             
       noTone(buzzer);
       delay(100);
       //2
       tone(buzzer, 1000);
-      delay(100);                       // wait for a second
+      delay(100);                  
       noTone(buzzer);
       delay(100);
       //3
       tone(buzzer, 1000);
-      delay(300);                       // wait for a second
+      delay(300);              
       noTone(buzzer);
-      //delay(300);
+ 
    }
    if(val =='X'){
     
